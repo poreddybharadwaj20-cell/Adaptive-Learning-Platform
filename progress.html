@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Progress - Adaptive Learning</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, rgba(30,41,59,0.9), rgba(202,138,4,0.85)), 
+                  url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1740&q=80")
+                  no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Header -->
+  <header class="p-6 bg-black/40 backdrop-blur-lg flex justify-between items-center">
+    <h1 class="text-2xl font-extrabold">📊 Track Progress</h1>
+    <a href="features.html" class="hover:text-yellow-300 transition">← Back</a>
+  </header>
+
+  <!-- Progress Section -->
+  <main class="py-16 max-w-6xl mx-auto px-6 space-y-12">
+
+    <!-- Progress Bar -->
+    <section class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8">
+      <h2 class="text-xl font-bold mb-4">Overall Study Completion</h2>
+      <div class="w-full bg-gray-300/30 rounded-full h-6 overflow-hidden">
+        <div id="progressBar" class="h-6 bg-green-500 w-[65%] transition-all"></div>
+      </div>
+      <p id="progressText" class="mt-3 font-semibold">65% Complete</p>
+    </section>
+
+    <!-- Chart -->
+    <section class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8">
+      <h2 class="text-xl font-bold mb-6">Performance Over Time</h2>
+      <canvas id="progressChart" class="w-full h-64"></canvas>
+    </section>
+
+    <!-- Stats -->
+    <section class="grid gap-6 md:grid-cols-3">
+      <div class="p-6 bg-white/10 rounded-2xl text-center hover:scale-105 transition">
+        <h3 class="text-lg font-bold text-green-300">✅ Quizzes Completed</h3>
+        <p class="text-3xl font-extrabold mt-2">12</p>
+      </div>
+      <div class="p-6 bg-white/10 rounded-2xl text-center hover:scale-105 transition">
+        <h3 class="text-lg font-bold text-yellow-300">📖 Documents Studied</h3>
+        <p class="text-3xl font-extrabold mt-2">8</p>
+      </div>
+      <div class="p-6 bg-white/10 rounded-2xl text-center hover:scale-105 transition">
+        <h3 class="text-lg font-bold text-pink-300">⭐ Average Score</h3>
+        <p class="text-3xl font-extrabold mt-2">82%</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chart Script -->
+  <script>
+    const ctx = document.getElementById("progressChart").getContext("2d");
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        datasets: [{
+          label: "Quiz Scores",
+          data: [70, 75, 80, 85],
+          borderColor: "#facc15",
+          backgroundColor: "rgba(250, 204, 21, 0.2)",
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true, max: 100 }
+        }
+      }
+    });
+  </script>
+   <a href="features.html" class="hover:text-yellow-300 transition">← Back</a>
+</body>
+</html>
